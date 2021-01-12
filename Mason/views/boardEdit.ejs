@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>게시글 수정</h2>
+    <hr>
+
+    <form action="/board/<%= post.id %>?_method=PUT" method="post">
+        <table>
+            <tr>
+                <td><input type="text" name="editTitle" value="<%= post.title %>"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="editContent" value="<%= post.content %>"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="editWriter" value="<%= post.writer %>"></td>
+            </tr>
+        </table>
+        <input type="submit" value="저장">
+    </form>
+</body>
+
+</html>
