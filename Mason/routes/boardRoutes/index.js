@@ -9,7 +9,7 @@ router.put('/:id',controllers.boardUpdate);
 router.delete('/:id',controllers.boardDelete);
 
 router.get('/add',function(req, res){
-    res.render('boardAdd');
+    res.render('board/boardAdd');
 })
 
 module.exports = router;

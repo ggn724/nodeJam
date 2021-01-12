@@ -4,7 +4,7 @@ const models = require('../../models');
 exports.BoardList = (req, res) => {
     models.post.findAll()
         .then(result => {
-            res.render("boardList", {
+            res.render("board/boardList", {
                 posts: result
             });
         })
@@ -41,7 +41,7 @@ exports.BoardUpdateSearch = (req, res) => {
         where: { id: postID }
     })
         .then(result => {
-            res.render("boardEdit", {
+            res.render("board/boardEdit", {
                 post: result
             });
         })
