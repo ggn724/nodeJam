@@ -8,6 +8,7 @@ const methodOverride = require('method-override');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+// var expressLayouts = require('express-ejs-layouts');
 
 var app = express();
 
@@ -21,6 +22,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
+// app.use(expressLayouts);
+// app.set('layout','layouts/layout');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

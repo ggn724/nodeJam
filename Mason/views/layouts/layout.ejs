@@ -11,18 +11,17 @@
 </head>
 
 <body>
-    <div class="container">
-        <form class="form-signin" action="/users/login" method="POST">
-            <h2 class="form-signin-heading">Login</h2>
-            <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="text" name="userEmail" id="inputEmail" class="form-control" placeholder="Email address"
-                required autofocus>
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password"
-                required>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">login</button>
-        </form>
+    <div id="header">
+        <%- include('header') %>
     </div>
+    <div>
+        <%- body %>
+    </div>
+
+    <section id="footer">
+        <%- include('footer') %>
+    </section>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
@@ -35,23 +34,3 @@
 </body>
 
 </html>
-
-
-
-
-<!-- 
-<form action="/users/login" method="POST">
-    <table>
-        <tr>
-            <td>이메일(ID) : </td>
-            <td><input type="text" name="userEmail"></td>
-        </tr>
-        <tr>
-            <td>PW : </td>
-            <td><input type="password" name="password"></td>
-        </tr>
-        <tr>
-            <td><input type="submit" value="로그인"></td>
-        </tr>
-    </table>
-</form> -->
