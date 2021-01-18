@@ -3,10 +3,12 @@ const crypto = require('crypto');   // 암호화 모듈 (단방향)
 const { join } = require("path");
 const session = require("express-session");
 
+// 가입 GET
 exports.SignupPage = (req, res, next) => {
     res.render("user/signup", { title: 'signup' });
 }
 
+// 가입 POST
 exports.Signup = (req, res, next) => {
     let body = req.body;
 
@@ -33,6 +35,7 @@ exports.Signup = (req, res, next) => {
         })
 };
 
+// 로그인 GET
 exports.LoginPage = (req, res, next) => {
     let session = req.session;
     res.render("user/login", {
@@ -43,6 +46,7 @@ exports.LoginPage = (req, res, next) => {
     });
 }
 
+// 로그인 POST
 exports.Login = async (req, res, next) => {
     let body = req.body;
     let results = await models.user.findOne({
@@ -90,4 +94,16 @@ exports.Login = async (req, res, next) => {
                 join: false
             });
         })
+};
+
+// 로그아웃
+exports.logout = (req, res, next) => {
+    req.session.destroy();
+    res.clearCookie('sid');
+
+    res.render("user/login", {
+        title: 'login',
+        pass: true,
+        join: false
+    });
 };

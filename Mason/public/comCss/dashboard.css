@@ -100,3 +100,5 @@
   transition-property: width;
 
 }
+
+input[type="submit"]{font-family: "FontAwesome";}
