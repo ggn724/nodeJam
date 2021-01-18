@@ -1,6 +1,7 @@
 const models = require("../../models");
 const crypto = require('crypto');   // 암호화 모듈 (단방향)
 const { join } = require("path");
+const session = require("express-session");
 
 exports.SignupPage = (req, res, next) => {
     res.render("user/signup", { title: 'signup' });
@@ -33,17 +34,18 @@ exports.Signup = (req, res, next) => {
 };
 
 exports.LoginPage = (req, res, next) => {
+    let session = req.session;
     res.render("user/login", {
         title: 'login',
         pass: true,
-        join: false
+        join: false,
+        session: session
     });
 }
 
 exports.Login = async (req, res, next) => {
     let body = req.body;
-
-    let result = await models.user.findOne({
+    let results = await models.user.findOne({
         where: {
             email: body.userEmail
         }
@@ -56,7 +58,18 @@ exports.Login = async (req, res, next) => {
 
             if (dbPassword === hashPassword) {
                 console.log("[LOG][LOGIN][LOGIN] user login..........ok");
-                res.redirect("/");
+                req.session.email = body.userEmail;
+                req.session.name = result.dataValues.name;
+                console.log("세션 :" + req.session.email);
+                console.log("이름 :" + req.session.name);
+                req.session.save(() => {
+                    res.render('main', {
+                        "name": req.session.name
+                    });
+                });
+                // res.render("main", {
+                //     session: req.session
+                // });
             }
             else {
                 console.log("[ERR][LOGIN][LOGIN] user login..........fail");
