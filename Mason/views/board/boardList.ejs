@@ -1,41 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<% include ../includes/comm_head.ejs %>
 
 <body>
-    <h2>게시글</h2>
-    <hr>
-    <table border="1">
-        <tr>
-            <td>제목</td>
-            <td>내용</td>
-            <td>작성자</td>
-            <td>작성일</td>
-            <td>버튼</td>
-            <td>버튼</td>
-        </tr>
-        <% for(let post of posts) { %>
-        <tr>
-            <td><%= post.title %></td>
-            <td><%= post.content %></td>
-            <td><%= post.writer %></td>
-            <td><%= post.createdAt %></td>
-            <td><button><a href="/board/edit/<%=post.id%>" style="text-decoration: none">수정</a></button></td>
+    <div class="Wrapper">
+        <!-- Header bar -->
+        <% include ../layouts/header.ejs %>
+        <!-- Side bar -->
+        <div class="container-fluid" style="padding-top: 51px;">
+            <div class="row">
+                <% include ../layouts/sideBar.ejs %>
+                <!-- Content -->
+                <main class="col-md-9 col-xs-11 p-l-2 p-t-2">
+                    <div class="page-header">
+                        <h2>게시글</h2>
+                        <div class="text-right">
+                            <h5>● 총 <%= posts.length %>건의 게시글</h5>
+                        </div>
+                    </div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center">순번</th>
+                                <th scope="col" class="text-center">제목</th>
+                                <th scope="col" class="text-center">작성자</th>
+                                <th scope="col" class="text-center">작성일</th>
+                                <th scope="col" class="text-center">수정</th>
+                                <th scope="col" class="text-center">삭제</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <script>
+                                var cnt = {};
+                            </script>
+                            <% if(posts == null || posts.length == 0){ %>
+                            <tr>
+                                <td colspan="6" class="text-center"> 게시글이 없습니다.</td>
+                            </tr>
+                            <% }%>
 
-            <form action="/board/<%=post.id%>?_method=DELETE" method="post">
-                <td><input type="submit" value="삭제"></input></td>
-            </form>
-        </tr>
-        <% } %>
-    </table>
-    <div>
-        <button><a href="/board/add" style="text-decoration: none">게시글 작성</a></button>
+                            <% for(var i=0; i< posts.length; i++) { 
+                                var listItem = posts[i];
+                                %>
+                            <tr>
+                                <th style="width: 5%" class="text-center"><%= i+1%> </th>
+                                <td style="width: 45%"><a href="/board/detail/<%=listItem.id%>"
+                                        style="text-decoration: none"><%= listItem.title %></a>
+                                </td>
+                                <td style="width: 15%" class="text-center"><%= listItem.writer %></td>
+                                <td style="width: 15%" class="text-center"><%= listItem.createdAt %></td>
+                                <td style="width: 10%" class="text-center"><button><a
+                                            href="/board/edit/<%=listItem.id%>"
+                                            style="text-decoration: none">수정</a></button></td>
+
+                                <form action="/board/<%=listItem.id%>?_method=DELETE" method="post">
+                                    <td style="width: 10%" class="text-center"><input type="submit" value="삭제"></input>
+                                    </td>
+                                </form>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                    <hr>
+                    <div>
+                        <a class="btn btn-primary" href="/board/add" style="text-decoration: none">작성하기</a>
+                    </div>
+                </main>
+            </div>
+        </div>
     </div>
+    <!-- Footer -->
+    <% include ../layouts/footer.ejs %>
 </body>
 
 </html>

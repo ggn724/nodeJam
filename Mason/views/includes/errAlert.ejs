@@ -1,0 +1,15 @@
+<!-- 장애 알림 모음 -->
+
+<!-- 로그인 -->
+<% if(pass == false) {%>
+<script type="text/javascript">
+    alert('Email(ID) 혹은 패스워드가 맞지 않습니다. \n다시 로그인 해주세요.');
+</script>
+<% } %>
+
+<!-- 가입여부 -->
+<% if(join == true) {%>
+<script type="text/javascript">
+    alert('가입을 축하드립니다. \n로그인 해주세요.');
+</script>
+<% } %>

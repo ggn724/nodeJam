@@ -4,7 +4,7 @@ const boardPath = require('./boardRoutes');
 
 // 메인 페이지
 router.get('/', function (req, res, next) {
-    res.send('환영합니다~');
+    res.render('main', { title: "gg" });
 });
 
 router.use('/board', boardPath);

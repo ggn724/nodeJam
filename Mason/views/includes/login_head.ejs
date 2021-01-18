@@ -1,0 +1,24 @@
+<head>
+    <!-- 공통헤더 -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- 페이지 헤더 -->
+    <% if(title == "login") { %>
+    <% include ../includes/errAlert.ejs %>
+    <link href="/comCss/login.css" rel="stylesheet" type="text/css">
+    <title>로그인</title>
+
+    <% } else if(title == "signup"){ %>
+    <link href="/comCss/login.css" rel="stylesheet" type="text/css">
+    <title>회원가입</title>
+
+    <% } else {%>
+    <title>WEB</title>
+    <% } %>
+
+</head>

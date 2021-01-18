@@ -87,3 +87,25 @@ exports.boardDelete = (req, res, next) => {
             console.log("장애) "+err);
         });
 };
+
+// /board -> 작성하기 버튼
+exports.boardDirectWrite = (req, res) => {
+    res.render('board/boardAdd');
+}
+
+exports.BoardDetailSearch = (req, res) => {
+    let postID = req.params.id;
+
+    models.post.findOne({
+        where: { id: postID }
+    })
+        .then(result => {
+            res.render("board/boardDetail", {
+                post: result
+            });
+        })
+        .catch(err => {
+            console.log("[ERR][BOARD][DETAIL] search data..........fail");
+            console.log("장애) "+err);
+        });
+};

@@ -1,30 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<% include ../includes/comm_head.ejs %>
 
 <body>
-    <h2>게시글 작성</h2>
-    <hr>
-    <form action="/board" method="POST">
-        <table>
-            <tr>
-                <td><input type="text" name="inputTitle" placeholder="제목을 입력하세요."></td>
-            </tr>
-            <tr>
-                <td><input type="text" name="inputContent" placeholder="내용을 입력하세요."></td>
-            </tr>
-            <tr>
-                <td><input type="text" name="inputWriter" placeholder="작성자를 입력하세요."></td>
-            </tr>
-        </table>
-        <input type="submit" value="저장">
-        <!-- <button><a href="/board" style="text-decoration: none">이전</a></button> -->
-    </form>
+    <div class="Wrapper">
+        <!-- Header bar -->
+        <% include ../layouts/header.ejs %>
+        <!-- Side bar -->
+        <div class="container-fluid" style="padding-top: 51px;">
+            <div class="row">
+                <% include ../layouts/sideBar.ejs %>
+                <!-- Content -->
+                <main class="col-md-9 col-xs-11 p-l-2 p-t-2">
+                    <div class="page-header">
+                        <h2>게시글 작성</h2>
+                    </div>
+                    <form action="/board" method="POST">
+                        <div class="form-group">
+                            <label for="title">제목</label>
+                            <input type="text" id="title" name="inputTitle" placeholder="제목을 입력하세요."
+                                class="form-control" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label for="writer">작성자</label>
+                            <input type="text" id="writer" name="inputWriter" placeholder="작성자를 입력하세요."
+                                class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="body">내용</label>
+                            <textarea type="text" id="body" name="inputContent" rows="5" placeholder="내용을 입력하세요."
+                                class="form-control"></textarea>
+                        </div>
+                        <hr>
+                        <div>
+                            <input class="btn btn-primary" type="submit" value="저장하기" />
+                            <a class="btn btn-primary" href="/board" style="text-decoration: none">돌아가기</a>
+                        </div>
+                    </form>
+                </main>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <% include ../layouts/footer.ejs %>
 </body>
 
 </html>

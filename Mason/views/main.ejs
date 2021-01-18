@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<% include includes/comm_head.ejs %>
+
+<body>
+    <div class="Wrapper">
+        <!-- Header bar -->
+        <% include layouts/header.ejs %>
+        <!-- Side bar -->
+        <div class="container-fluid" style="padding-top: 51px;">
+            <div class="row">
+                <% include layouts/sideBar.ejs %>
+                <!-- Content -->
+                <main class="col-md-9 col-xs-11 p-l-2 p-t-2">
+                    <div class="page-header">
+                        <h2>WEB MAIN</h2>
+                    </div>
+                    <p class="lead">A responsive, multi-level vertical accordion.</p>
+                </main>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <% include layouts/footer.ejs %>
+
+</body>
+
+</html>
