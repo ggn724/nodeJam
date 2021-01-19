@@ -41,7 +41,6 @@ exports.Signup = (req, res, next) => {
 
 // 로그인 GET
 exports.LoginPage = (req, res, next) => {
-    let session = req.session;
     res.render("user/login", {
         title: 'login',
         pass: true,
