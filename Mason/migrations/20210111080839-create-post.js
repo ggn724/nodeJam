@@ -1,4 +1,5 @@
 'use strict';
+// MySQL에 실제 이식될 테이블의 형태를 결정
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('posts', {

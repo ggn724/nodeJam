@@ -18,14 +18,14 @@ exports.BoardList = (req, res) => {
         });
 };
 
-// create
+// create - row 생성
 exports.BoardWrite = (req, res) => {
     let body = req.body;
     let session = req.session;
 
     models.post.create({
         title: body.inputTitle,
-        content: body.inputContent,
+        content: session.nmae,
         writer: body.inputWriter
     })
         .then(result => {
