@@ -21,12 +21,11 @@ exports.BoardList = (req, res) => {
 // create - row 생성
 exports.BoardWrite = (req, res) => {
     let body = req.body;
-    let session = req.session;
 
     models.post.create({
         title: body.inputTitle,
-        content: session.nmae,
-        writer: body.inputWriter
+        content: body.inputContent,
+        writer: req.session.name
     })
         .then(result => {
             console.log("[LOG][BOARD][CREATE] create data..........ok");

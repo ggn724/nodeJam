@@ -1,49 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<% include ../includes/comm_head.ejs %>
-
-<body>
-    <div class="Wrapper">
-        <!-- Header bar -->
-        <% include ../layouts/header.ejs %>
-        <!-- Side bar -->
-        <div class="container-fluid" style="padding-top: 51px;">
-            <div class="row">
-                <% include ../layouts/sideBar.ejs %>
-                <!-- Content -->
-                <main class="col-md-9 col-xs-11 p-l-2 p-t-2">
-                    <div class="page-header">
-                        <h2>게시글 수정</h2>
-                    </div>
-                    <form action="/board/<%= post.id %>?_method=PUT" method="post">
-                        <div class="form-group">
-                            <label for="title">제목</label>
-                            <input type="text" id="title" name="editTitle" value="<%= post.title %>"
-                                class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="writer">작성자</label>
-                            <input type="text" id="writer" name="editWriter" value="<%= post.writer %>"
-                                class="form-control" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="body">내용</label>
-                            <textarea type="text" id="body" name="editContent" rows="5" class="form-control" required
-                                autofocus><%= post.content %></textarea>
-                        </div>
-                        <hr>
-                        <div>
-                            <input class="btn btn-primary" type="submit" value="저장하기" />
-                            <a class="btn btn-primary" href="/board" style="text-decoration: none">돌아가기</a>
-                        </div>
-                    </form>
-                </main>
-            </div>
-        </div>
+<!-- Content -->
+<main class="col-md-9 col-xs-11 p-l-2 p-t-2">
+    <div class="page-header">
+        <h2>게시글 수정</h2>
     </div>
-    <!-- Footer -->
-    <% include ../layouts/footer.ejs %>
-</body>
-
-</html>
+    <form action="/board/<%= post.id %>?_method=PUT" method="post">
+        <div class="form-group">
+            <label for="title">제목</label>
+            <input type="text" id="title" name="editTitle" value="<%= post.title %>" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="writer">작성자</label>
+            <input type="text" id="writer" name="editWriter" value="<%= post.writer %>" class="form-control" readonly>
+        </div>
+        <div class="form-group">
+            <label for="body">내용</label>
+            <textarea type="text" id="body" name="editContent" rows="5" class="form-control" required
+                autofocus><%= post.content %></textarea>
+        </div>
+        <hr>
+        <div>
+            <input class="btn btn-primary" type="submit" value="저장하기" />
+            <a class="btn btn-primary" href="/board" style="text-decoration: none">돌아가기</a>
+        </div>
+    </form>
+</main>

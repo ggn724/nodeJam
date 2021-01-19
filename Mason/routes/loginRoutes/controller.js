@@ -5,7 +5,10 @@ const session = require("express-session");
 
 // 가입 GET
 exports.SignupPage = (req, res, next) => {
-    res.render("user/signup", { title: 'signup' });
+    res.render("user/signup", {
+        title: 'signup',
+        "name": req.session.name
+    });
 }
 
 // 가입 POST
@@ -26,7 +29,8 @@ exports.Signup = (req, res, next) => {
             res.render("user/login", {
                 title: 'login',
                 pass: true,
-                join: true
+                join: true,
+                "name": req.session.name
             });
         })
         .catch(err => {
@@ -42,7 +46,7 @@ exports.LoginPage = (req, res, next) => {
         title: 'login',
         pass: true,
         join: false,
-        session: session
+        "name": req.session.name
     });
 }
 
@@ -104,6 +108,7 @@ exports.logout = (req, res, next) => {
     res.render("user/login", {
         title: 'login',
         pass: true,
-        join: false
+        join: false,
+        "name": false
     });
 };
