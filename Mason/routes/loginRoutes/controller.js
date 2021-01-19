@@ -84,7 +84,8 @@ exports.Login = async (req, res, next) => {
                 res.render("user/login", {
                     title: 'login',
                     pass: false,
-                    join: false
+                    join: false,
+                    "name":req.session.name
                 });
             }
         })
@@ -94,7 +95,8 @@ exports.Login = async (req, res, next) => {
             res.render("user/login", {
                 title: 'login',
                 pass: false,
-                join: false
+                join: false,
+                "name": req.session.name
             });
         })
 };
